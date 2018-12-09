@@ -5,6 +5,9 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+import java.awt.*;
+
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,7 +36,7 @@ public class Tapahtumankuuntelija implements EventHandler {
             komento.suorita();
             edellinen = komento;
         } else {
-            /*edellinen.peru();*/
+            edellinen.peru();
             edellinen = null;
         }
     }

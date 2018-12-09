@@ -13,6 +13,7 @@ public class Nollaa implements Komento {
     private Button nollaa;
     private Button undo;
     private Sovelluslogiikka sovellus;
+    private int tilanneNyt;
 
 
     public Nollaa(TextField tuloskentta, TextField syotekentta, Button nollaa, Button undo, Sovelluslogiikka sovellus) {
@@ -21,10 +22,13 @@ public class Nollaa implements Komento {
         this.nollaa = nollaa;
         this.undo = undo;
         this.sovellus = sovellus;
+        this.tilanneNyt = 0;
     }
 
     @Override
     public void suorita() {
+        tilanneNyt = Integer.parseInt(tuloskentta.getText());
+
         sovellus.nollaa();
 
         int laskunTulos = sovellus.tulos();
@@ -38,6 +42,14 @@ public class Nollaa implements Komento {
             nollaa.disableProperty().set(false);
         }
         undo.disableProperty().set(false);
+    }
+
+    @Override
+    public void peru() {
+        tuloskentta.setText("" + tilanneNyt);
+        sovellus.setTulos(tilanneNyt);
+        undo.disableProperty().set(true);
+        nollaa.disableProperty().set(false);
     }
 
 }
